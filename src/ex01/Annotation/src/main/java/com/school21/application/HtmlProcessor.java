@@ -48,7 +48,8 @@ public class HtmlProcessor extends AbstractProcessor {
         final String htmlInputType = "<input type = \"submit\" value = \"Send\">";
         final String endForm = "</form>";
         HtmlForm htmlForm =  element.getAnnotation(HtmlForm.class);
-        try (FileWriter out = new FileWriter("./target/classes/" + htmlForm.fileName())) {
+        try (FileWriter out = new FileWriter("./target/classe" +
+                "s/" + htmlForm.fileName())) {
             out.write(String.format(htmlAction,htmlForm.action(),htmlForm.action(),htmlForm.method()));
             for (Element elem : element.getEnclosedElements()) {
                 HtmlInput input = elem.getAnnotation(HtmlInput.class);
