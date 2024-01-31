@@ -20,7 +20,7 @@
 35040||10|C|G
 35040||-9223372036854775808|T|G
 35040||10|T|G</Grants>
-      <IntrospectionStateNumber>2713</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2788</IntrospectionStateNumber>
       <ServerVersion>16 rc 1</ServerVersion>
       <StartupTime>1706435188</StartupTime>
       <TimeZones>true ACDT
@@ -818,7 +818,7 @@ false Zulu
 14697||10|C|G
 14697||-9223372036854775808|U|G
 14697||10|U|G</Grants>
-      <IntrospectionStateNumber>2713</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2788</IntrospectionStateNumber>
       <ObjectId>35040</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4277,8 +4277,8 @@ false Zulu
     <schema id="271" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>2713</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-01-30.19:49:42</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>2788</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-01-31.10:13:11</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4299,19 +4299,33 @@ false Zulu
       <StateNumber>2493</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="274" parent="271" name="chatroom">
+    <sequence id="274" parent="271" name="simple_user_id_seq">
+      <DasType>integer|0s</DasType>
+      <ObjectId>43794</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>2784</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="275" parent="271" name="chatroom">
       <ObjectId>35154</ObjectId>
       <StateNumber>2490</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="275" parent="271" name="message">
+    <table id="276" parent="271" name="message">
       <ObjectId>35168</ObjectId>
       <StateNumber>2493</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="276" parent="274" name="id">
+    <table id="277" parent="271" name="simple_user">
+      <ObjectId>43795</ObjectId>
+      <StateNumber>2784</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="278" parent="275" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;chatroom_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4320,27 +4334,27 @@ false Zulu
       <SequenceId>35153</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="277" parent="274" name="name">
+    <column id="279" parent="275" name="name">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>2490</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="278" parent="274" name="owner">
+    <column id="280" parent="275" name="owner">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>2490</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="279" parent="274" name="message">
+    <column id="281" parent="275" name="message">
       <DasType>integer|0s</DasType>
       <Position>4</Position>
       <StateNumber>2490</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="280" parent="274" name="chatroom_pkey">
+    <index id="282" parent="275" name="chatroom_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>35158</ObjectId>
@@ -4349,7 +4363,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="281" parent="274" name="chatroom_name_key">
+    <index id="283" parent="275" name="chatroom_name_key">
       <ColNames>name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>35160</ObjectId>
@@ -4360,20 +4374,20 @@ false Zulu
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="282" parent="274" name="chatroom_pkey">
+    <key id="284" parent="275" name="chatroom_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>35159</ObjectId>
       <Primary>1</Primary>
       <StateNumber>2490</StateNumber>
       <UnderlyingIndexId>35158</UnderlyingIndexId>
     </key>
-    <key id="283" parent="274" name="chatroom_name_key">
+    <key id="285" parent="275" name="chatroom_name_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>35161</ObjectId>
       <StateNumber>2490</StateNumber>
       <UnderlyingIndexId>35160</UnderlyingIndexId>
     </key>
-    <column id="284" parent="275" name="id">
+    <column id="286" parent="276" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;message_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4382,42 +4396,42 @@ false Zulu
       <SequenceId>35167</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="285" parent="275" name="author">
+    <column id="287" parent="276" name="author">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>2493</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="286" parent="275" name="room">
+    <column id="288" parent="276" name="room">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>2493</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="287" parent="275" name="text">
+    <column id="289" parent="276" name="text">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>2493</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="288" parent="275" name="time">
+    <column id="290" parent="276" name="time">
       <DasType>timestamp|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>2493</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="289" parent="275" name="fk_room">
+    <foreign-key id="291" parent="276" name="fk_room">
       <ColNames>room</ColNames>
       <ObjectId>35179</ObjectId>
       <StateNumber>2493</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>35154</RefTableId>
     </foreign-key>
-    <index id="290" parent="275" name="message_pkey">
+    <index id="292" parent="276" name="message_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>35172</ObjectId>
@@ -4426,12 +4440,55 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="291" parent="275" name="message_pkey">
+    <key id="293" parent="276" name="message_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>35173</ObjectId>
       <Primary>1</Primary>
       <StateNumber>2493</StateNumber>
       <UnderlyingIndexId>35172</UnderlyingIndexId>
+    </key>
+    <column id="294" parent="277" name="id">
+      <DasType>integer|0s</DasType>
+      <DefaultExpression>nextval(&apos;simple_user_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2784</StateNumber>
+      <SequenceId>43794</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="295" parent="277" name="first_name">
+      <DasType>varchar(10)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>2784</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="296" parent="277" name="last_name">
+      <DasType>varchar(10)|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>2784</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="297" parent="277" name="age">
+      <DasType>integer|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>2784</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="298" parent="277" name="simple_user_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>43799</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2784</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="299" parent="277" name="simple_user_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>43800</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2784</StateNumber>
+      <UnderlyingIndexId>43799</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
