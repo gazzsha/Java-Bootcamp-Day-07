@@ -13,7 +13,8 @@ public class Types {
          int length = ((OrmColumn)annotation).lenght();
          return "varchar(" + length + ")";
      }
-     if (type == Long.class) return "numeric";
+     if (type == Long.class) return "bigint";
+     if (type == Boolean.class) return "bool";
      return null;
  }
 }

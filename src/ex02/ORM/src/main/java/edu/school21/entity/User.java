@@ -8,7 +8,7 @@ import edu.school21.annotation.OrmEntity;
 @OrmEntity(table = "simple_user")
 public class User {
     @OrmColumnId
-    private Long id;
+    private Integer id;
 
     @OrmColumn(name = "first_name",lenght = 10)
     private String firstName;
@@ -18,40 +18,23 @@ public class User {
     @OrmColumn(name = "age")
     private Integer age;
 
+    @OrmColumn(name = "status")
+    private Boolean status;
+
+    @OrmColumn(name = "money")
+    private Long money;
+
     public User() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
+    public User(String firstName, String lastName, Integer age, Boolean status, Long money) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
         this.age = age;
+        this.status = status;
+        this.money = money;
     }
+
 
     @Override
     public String toString() {
@@ -60,6 +43,8 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
+                ", status=" + status +
+                ", money=" + money +
                 '}';
     }
 }

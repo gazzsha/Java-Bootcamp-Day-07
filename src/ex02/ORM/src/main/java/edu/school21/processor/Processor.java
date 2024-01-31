@@ -60,6 +60,7 @@ public class Processor extends AbstractProcessor {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement preparedStatement1 = connection.prepareStatement(SQLDropTable.toString());
             System.out.println(SQLDropTable);
+            System.out.println(SQLQuery);
             preparedStatement1.executeUpdate();
             PreparedStatement preparedStatement = connection.prepareStatement(SQLQuery.toString());
             preparedStatement.executeUpdate();
